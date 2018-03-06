@@ -10,7 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
     @IBOutlet weak var bottom: NSLayoutConstraint!
+    
+    // MARK: - Login
+    
+    @IBAction func login(_ sender: Any) {
+    }
+
+    // MARK: - Subscribe to keyboard notifications
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,6 +51,22 @@ class LoginViewController: UIViewController {
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }
+    }
+    
+}
+
+// MARK: - Text field delegate
+
+extension LoginViewController : UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == email {
+            password.becomeFirstResponder()
+        } else if textField == password {
+            textField.resignFirstResponder()
+            self.login(textField)
+        }
+        return true
     }
     
 }
