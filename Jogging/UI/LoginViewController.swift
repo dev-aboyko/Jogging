@@ -17,6 +17,13 @@ class LoginViewController: UIViewController {
     // MARK: - Login
     
     @IBAction func login(_ sender: Any) {
+        let api = APILogin(email: email.text!, password: password.text!)
+        api.connect {
+
+            UserData.token = api.token
+            UserData.refreshToken = api.refreshToken
+            
+        }
     }
 
     // MARK: - Subscribe to keyboard notifications
@@ -45,7 +52,6 @@ class LoginViewController: UIViewController {
     }
     
     private func setBottomConstraint(_ constant: CGFloat) {
-        NSLog("Bottom constant: \(constant)")
         bottom.constant = constant
         UIView.animate(withDuration: 0.3) {
             self.view.setNeedsLayout()

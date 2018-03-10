@@ -20,6 +20,11 @@
 		8AEE5F4B204EA7E9003DFA75 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEE5F4A204EA7E9003DFA75 /* Login.storyboard */; };
 		8AEE5F4E204EAC0C003DFA75 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */; };
 		8AEE5F53204FAD4D003DFA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AEE5F52204FAD4C003DFA75 /* GoogleService-Info.plist */; };
+		8AEE5F59204FBAD9003DFA75 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F58204FBAD9003DFA75 /* Log.swift */; };
+		8AEE5F5B2053C5C6003DFA75 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F5A2053C5C6003DFA75 /* RestAPI.swift */; };
+		8AEE5F5D2053C913003DFA75 /* APILogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F5C2053C913003DFA75 /* APILogin.swift */; };
+		8AEE5F6B2053CF3A003DFA75 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F6A2053CF3A003DFA75 /* Config.swift */; };
+		8AEE5F6E2053DD9E003DFA75 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F6D2053DD9E003DFA75 /* UserData.swift */; };
 		FCF310BF340487EC82131E97 /* Pods_Jogging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B75A9327EC2FFA51F11ACC0 /* Pods_Jogging.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +68,11 @@
 		8AEE5F4A204EA7E9003DFA75 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8AEE5F52204FAD4C003DFA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8AEE5F58204FBAD9003DFA75 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		8AEE5F5A2053C5C6003DFA75 /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
+		8AEE5F5C2053C913003DFA75 /* APILogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILogin.swift; sourceTree = "<group>"; };
+		8AEE5F6A2053CF3A003DFA75 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		8AEE5F6D2053DD9E003DFA75 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		95692C96C2085E7C34B8F65F /* Pods-JoggingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoggingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JoggingTests/Pods-JoggingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB4845E0A7AA341AEB8C0ED4 /* Pods_JoggingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JoggingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD14FF1F1B1499244E7CE291 /* Pods-Jogging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jogging.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jogging/Pods-Jogging.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,8 +142,12 @@
 		8A35DF11204D1CD900CEADB5 /* Jogging */ = {
 			isa = PBXGroup;
 			children = (
+				8AEE5F54204FB6FF003DFA75 /* API */,
 				8AEE5F4C204EA7F1003DFA75 /* UI */,
+				8AEE5F57204FBAC7003DFA75 /* Utilities */,
+				8AEE5F6C2053DD91003DFA75 /* Persistent */,
 				8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */,
+				8AEE5F6A2053CF3A003DFA75 /* Config.swift */,
 				8A35DF14204D1CD900CEADB5 /* ViewController.swift */,
 				8A35DF16204D1CD900CEADB5 /* Main.storyboard */,
 				8A35DF1C204D1CD900CEADB5 /* Assets.xcassets */,
@@ -170,6 +184,31 @@
 				8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		8AEE5F54204FB6FF003DFA75 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8AEE5F5A2053C5C6003DFA75 /* RestAPI.swift */,
+				8AEE5F5C2053C913003DFA75 /* APILogin.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		8AEE5F57204FBAC7003DFA75 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8AEE5F58204FBAD9003DFA75 /* Log.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8AEE5F6C2053DD91003DFA75 /* Persistent */ = {
+			isa = PBXGroup;
+			children = (
+				8AEE5F6D2053DD9E003DFA75 /* UserData.swift */,
+			);
+			path = Persistent;
 			sourceTree = "<group>";
 		};
 		F34803939357598A1649215C /* Pods */ = {
@@ -399,14 +438,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Jogging/Pods-Jogging-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +529,11 @@
 			files = (
 				8AEE5F4E204EAC0C003DFA75 /* LoginViewController.swift in Sources */,
 				8A35DF1B204D1CD900CEADB5 /* Jogging.xcdatamodeld in Sources */,
+				8AEE5F6B2053CF3A003DFA75 /* Config.swift in Sources */,
+				8AEE5F6E2053DD9E003DFA75 /* UserData.swift in Sources */,
+				8AEE5F5B2053C5C6003DFA75 /* RestAPI.swift in Sources */,
+				8AEE5F59204FBAD9003DFA75 /* Log.swift in Sources */,
+				8AEE5F5D2053C913003DFA75 /* APILogin.swift in Sources */,
 				8A35DF15204D1CD900CEADB5 /* ViewController.swift in Sources */,
 				8A35DF13204D1CD900CEADB5 /* AppDelegate.swift in Sources */,
 			);
