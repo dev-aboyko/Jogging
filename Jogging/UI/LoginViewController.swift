@@ -17,12 +17,13 @@ class LoginViewController: UIViewController {
     // MARK: - Login
     
     @IBAction func login(_ sender: Any) {
-        let api = APILogin(email: email.text!, password: password.text!)
-        api.connect {
-
-            UserData.token = api.token
-            UserData.refreshToken = api.refreshToken
-            
+        API.login(email: email.text!, password: password.text!) { (errorMessage) in
+            if let errorMessage = errorMessage {
+                Log.error(errorMessage)
+            } else {
+                Log.message("Login successfull")
+                Log.message("Token expires at \(UserData.expiresAt!)")
+            }
         }
     }
 

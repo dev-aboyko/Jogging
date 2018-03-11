@@ -18,29 +18,17 @@ class APIStatus {
 
 class RestAPI: APIStatus {
     
-    private let urlString: String
-    private let parameters: Dictionary<String, Any>
-    private let method: HTTPMethod
+    let urlString: String
     
-    init(urlString: String, parameters: Dictionary<String, Any>, method: HTTPMethod) {
+    init(urlString: String) {
         self.urlString = urlString
-        self.parameters = parameters
-        self.method = method
     }
     
-    func connect(processResponse: @escaping () -> Void) {
-        let contentType: HTTPHeaders = ["Content-Type" : "application/json"]
-        guard let url = URL(string: urlString) else {
-            Log.error("creating URL for authentication")
-            return
-        }
-        Alamofire.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: contentType).response { response in
-            if let data = response.data {
-                self.checkReceived(data)
-            } else {
-                self.processFail(message: response.error?.localizedDescription ?? "")
-            }
-            processResponse()
+    func processResponse(_ response: DefaultDataResponse) {
+        if let data = response.data {
+            self.checkReceived(data)
+        } else {
+            self.processFail(message: response.error?.localizedDescription ?? "")
         }
     }
     
@@ -62,4 +50,42 @@ class RestAPI: APIStatus {
         statusDescription = message
     }
     
+}
+
+class RestAPIpost: RestAPI {
+    
+    private let parameters: Dictionary<String, Any>
+
+    init(urlString: String, parameters: Dictionary<String, Any>) {
+        self.parameters = parameters
+        super.init(urlString: urlString)
+    }
+
+    func connect(_ completion: @escaping () -> Void) {
+        let contentType: HTTPHeaders = ["Content-Type" : "application/json"]
+        guard let url = URL(string: urlString) else {
+            Log.error("creating URL for request")
+            return
+        }
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: contentType).response { response in
+            self.processResponse(response)
+            completion()
+        }
+    }
+    
+}
+
+class RestAPIget: RestAPI {
+    
+    func connect(_ completion: @escaping () -> Void) {
+        guard let url = URL(string: urlString) else {
+            Log.error("creating URL for GET request")
+            return
+        }
+        Alamofire.request(url).response { (dataResponse) in
+            self.processResponse(dataResponse)
+            completion()
+        }
+    }
+
 }
