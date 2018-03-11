@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class APIStatus {
+    var json: JSON?
     var isSuccessfull = false
     var statusDescription: String?
 }
@@ -53,14 +54,10 @@ class RestAPI: APIStatus {
             return
         }
         isSuccessfull = true
-        processSuccess(json: json)
+        self.json = json
     }
     
-    func processSuccess(json: JSON) {
-        Log.message("process success: \(json)")
-    }
-    
-    func processFail(message: String) {
+    private func processFail(message: String) {
         Log.error("process fail \(message)")
         statusDescription = message
     }
