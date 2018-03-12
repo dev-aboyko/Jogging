@@ -13,7 +13,7 @@ class APIGetUserRole: RestAPIget {
     var userRole: String? { return json?["role"].string }
     
     init(userId: String, token: String) {
-        let urlString = "https://jogging-71fe0.firebaseio.com/users/\(userId).json?auth=\(token)"
+        let urlString = "\(Config.baseURL)/users/\(userId).json?auth=\(token)"
         super.init(urlString: urlString)
     }
     
