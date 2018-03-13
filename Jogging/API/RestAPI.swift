@@ -42,6 +42,7 @@ class RestAPI: APIStatus {
             processFail(message: errorMessage)
             return
         }
+        Log.message("Received json: \(json)")
         isSuccessfull = true
         self.json = json
     }

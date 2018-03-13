@@ -7,42 +7,48 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class EntriesViewController: UITableViewController {
 
+    private var entryKeys: [String]?
+    private var entries: JSON?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         API.getEntries { (entries, errorMessage) in
             if let errorMessage = errorMessage {
                 Log.error(errorMessage)
             } else if let entries = entries {
-                Log.message("Received entries: \(entries)")
+                self.entries = entries
+                self.entryKeys = entries.map({ tuple -> String in
+                    let (key, _) = tuple
+                    return key
+                })
+                self.tableView.reloadData()
             }
         }
-        
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return entryKeys?.count ?? 0
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let reuseIdentifier = String(describing: EntryCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! EntryCell
+        let entryKey = entryKeys![indexPath.row]
+        let currentEntry = entries![entryKey]
+        cell.configure(with: currentEntry)
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

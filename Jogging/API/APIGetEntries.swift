@@ -20,7 +20,6 @@ class APIGetEntries: RestAPIget {
         let user = "\"user\""
         let params = "auth=\(token)&orderBy=\(user)&equalTo=\"\(userId)\"".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let urlString = "\(Config.baseURL)/entries.json?\(params)"
-        Log.message("url: \(urlString)")
         super.init(urlString: urlString)
     }
     
