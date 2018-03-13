@@ -26,6 +26,11 @@
 		8AEE5F702054D2FF003DFA75 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F6F2054D2FF003DFA75 /* API.swift */; };
 		8AEE5F7B2054EC6B003DFA75 /* APIGetUserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F712054D4F7003DFA75 /* APIGetUserRole.swift */; };
 		8AEE5F7D2056278D003DFA75 /* Jogging.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEE5F7C2056278D003DFA75 /* Jogging.storyboard */; };
+		8AEE5F7F2056381F003DFA75 /* APIAddEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F7E2056381F003DFA75 /* APIAddEntry.swift */; };
+		8AEE5F8120564351003DFA75 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F8020564351003DFA75 /* AddEntryViewController.swift */; };
+		8AEE5F8320564E94003DFA75 /* APIGetEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F8220564E94003DFA75 /* APIGetEntries.swift */; };
+		8AEE5F852056512F003DFA75 /* EntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F842056512F003DFA75 /* EntriesViewController.swift */; };
+		8AEE5F8720565658003DFA75 /* APIRefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F8620565658003DFA75 /* APIRefreshToken.swift */; };
 		FCF310BF340487EC82131E97 /* Pods_Jogging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B75A9327EC2FFA51F11ACC0 /* Pods_Jogging.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +80,11 @@
 		8AEE5F6F2054D2FF003DFA75 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8AEE5F712054D4F7003DFA75 /* APIGetUserRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetUserRole.swift; sourceTree = "<group>"; };
 		8AEE5F7C2056278D003DFA75 /* Jogging.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Jogging.storyboard; sourceTree = "<group>"; };
+		8AEE5F7E2056381F003DFA75 /* APIAddEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAddEntry.swift; sourceTree = "<group>"; };
+		8AEE5F8020564351003DFA75 /* AddEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
+		8AEE5F8220564E94003DFA75 /* APIGetEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetEntries.swift; sourceTree = "<group>"; };
+		8AEE5F842056512F003DFA75 /* EntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesViewController.swift; sourceTree = "<group>"; };
+		8AEE5F8620565658003DFA75 /* APIRefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRefreshToken.swift; sourceTree = "<group>"; };
 		95692C96C2085E7C34B8F65F /* Pods-JoggingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoggingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JoggingTests/Pods-JoggingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB4845E0A7AA341AEB8C0ED4 /* Pods_JoggingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JoggingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD14FF1F1B1499244E7CE291 /* Pods-Jogging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jogging.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jogging/Pods-Jogging.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +193,8 @@
 				8AEE5F4A204EA7E9003DFA75 /* Login.storyboard */,
 				8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */,
 				8AEE5F7C2056278D003DFA75 /* Jogging.storyboard */,
+				8AEE5F842056512F003DFA75 /* EntriesViewController.swift */,
+				8AEE5F8020564351003DFA75 /* AddEntryViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -193,7 +205,10 @@
 				8AEE5F6F2054D2FF003DFA75 /* API.swift */,
 				8AEE5F5A2053C5C6003DFA75 /* RestAPI.swift */,
 				8AEE5F5C2053C913003DFA75 /* APILogin.swift */,
+				8AEE5F8620565658003DFA75 /* APIRefreshToken.swift */,
 				8AEE5F712054D4F7003DFA75 /* APIGetUserRole.swift */,
+				8AEE5F7E2056381F003DFA75 /* APIAddEntry.swift */,
+				8AEE5F8220564E94003DFA75 /* APIGetEntries.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -532,14 +547,19 @@
 			files = (
 				8AEE5F4E204EAC0C003DFA75 /* LoginViewController.swift in Sources */,
 				8A35DF1B204D1CD900CEADB5 /* Jogging.xcdatamodeld in Sources */,
+				8AEE5F8720565658003DFA75 /* APIRefreshToken.swift in Sources */,
 				8AEE5F6B2053CF3A003DFA75 /* Config.swift in Sources */,
 				8AEE5F6E2053DD9E003DFA75 /* UserData.swift in Sources */,
 				8AEE5F5B2053C5C6003DFA75 /* RestAPI.swift in Sources */,
+				8AEE5F852056512F003DFA75 /* EntriesViewController.swift in Sources */,
 				8AEE5F59204FBAD9003DFA75 /* Log.swift in Sources */,
 				8AEE5F5D2053C913003DFA75 /* APILogin.swift in Sources */,
 				8AEE5F702054D2FF003DFA75 /* API.swift in Sources */,
 				8AEE5F7B2054EC6B003DFA75 /* APIGetUserRole.swift in Sources */,
+				8AEE5F8120564351003DFA75 /* AddEntryViewController.swift in Sources */,
+				8AEE5F7F2056381F003DFA75 /* APIAddEntry.swift in Sources */,
 				8A35DF13204D1CD900CEADB5 /* AppDelegate.swift in Sources */,
+				8AEE5F8320564E94003DFA75 /* APIGetEntries.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

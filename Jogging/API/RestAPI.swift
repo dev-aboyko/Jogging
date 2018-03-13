@@ -35,6 +35,7 @@ class RestAPI: APIStatus {
     private func checkReceived(_ data: Data) {
         guard let json = try? JSON(data: data) else {
             processFail(message: "decoding json")
+            Log.error("data: \(data)")
             return
         }
         if let errorMessage = json["error"]["message"].string {

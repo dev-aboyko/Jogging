@@ -19,11 +19,15 @@ class UserData {
     static var expiresAt: Date? {   get { return defaults.value(forKey: expiresAtKey) as? Date }
                                     set { defaults.set(newValue, forKey: expiresAtKey) } }
     
+    static var userId: String? { get { return defaults.string(forKey: userIdKey) }
+                                 set { defaults.set(newValue, forKey: userIdKey) }   }
+    
     static func clear() {
         token = nil
         refreshToken = nil
     }
     
+    private static let userIdKey = "user id"
     private static let tokenKey = "token"
     private static let refreshTokenKey = "refresh token"
     private static let expiresAtKey = "expires at"
