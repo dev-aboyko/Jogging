@@ -14,8 +14,8 @@ class EntriesViewController: UITableViewController {
     private var entryKeys: [String]?
     private var entries: JSON?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         API.getEntries { (entries, errorMessage) in
             if let errorMessage = errorMessage {
                 Log.error(errorMessage)
