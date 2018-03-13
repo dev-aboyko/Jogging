@@ -91,3 +91,19 @@ class RestAPIget: RestAPI {
     }
 
 }
+
+class RestAPIdelete: RestAPI {
+    
+    func connect(_ completion: @escaping () -> Void) {
+        guard let url = URL(string: urlString) else {
+            Log.error("creating URL for DELETE request")
+            return
+        }
+        Alamofire.request(url, method:.delete).response { (dataResponse) in
+            Log.message("Data response: \(dataResponse)")
+            self.statusDescription = dataResponse.error?.localizedDescription
+            completion()
+        }
+    }
+    
+}

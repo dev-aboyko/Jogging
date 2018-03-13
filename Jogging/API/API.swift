@@ -94,6 +94,23 @@ class API {
         }
     }
     
+    static func deleteEntry(name: String, completion: @escaping (String?) -> Void) {
+        refreshTokenIfNeeded { errorMessage in
+            guard errorMessage == nil else {
+                completion(errorMessage)
+                return
+            }
+            let api = APIDeleteEntry(name: name, token: UserData.token!)
+            api.connect {
+                if api.isSuccessfull {
+                    completion(nil)
+                } else {
+                    completion(api.statusDescription)
+                }
+            }
+        }
+    }
+    
     private static func refreshTokenIfNeeded(completion: @escaping (String?) -> Void) {
         let minInterval: TimeInterval = 120 // seconds to token expiration
         guard
