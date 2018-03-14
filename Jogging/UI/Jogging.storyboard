@@ -210,6 +210,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Entries" id="IBP-mr-oHL">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="ieh-rB-MhJ">
+                            <connections>
+                                <segue destination="hx9-Kv-wKQ" kind="presentation" identifier="Log out" id="XX9-mF-Lch"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zog-hc-T5h">
                             <connections>
                                 <segue destination="Wzm-co-8K0" kind="presentation" id="8by-bV-FBE"/>
@@ -223,6 +228,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVK-el-Ck8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="468" y="125"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="1IJ-59-Enk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="hx9-Kv-wKQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLj-Ot-SLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="560"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Hz-XH-S5m">

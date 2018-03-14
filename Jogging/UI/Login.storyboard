@@ -90,11 +90,20 @@
                         <outlet property="bottom" destination="uy3-1D-tXh" id="OyZ-og-O75"/>
                         <outlet property="email" destination="tpf-Tj-uoX" id="qtZ-ko-mpj"/>
                         <outlet property="password" destination="Vii-8U-ndI" id="4uc-na-eF0"/>
+                        <segue destination="9If-gB-lei" kind="presentation" identifier="Log in" id="lRs-iG-bSU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKs-bQ-FYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="256.80000000000001" y="131.78410794602701"/>
+        </scene>
+        <!--Jogging-->
+        <scene sceneID="QSw-Sz-YPO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Jogging" id="9If-gB-lei" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RF2-8e-drI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="131"/>
         </scene>
     </scenes>
 </document>

@@ -62,6 +62,8 @@ class EntriesViewController: UITableViewController {
             let filterVC = segue.destination as! FilterViewController
             filterVC.onSetFilter = { self.filter = $0 }
             filterVC.initialFilter = self.filter
+        } else if segue.identifier == "Log out" {
+            UserData.clear()
         }
     }
 

@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
             } else {
                 Log.message("Login successfull")
                 Log.message("Token expires at \(UserData.expiresAt!)")
+                self.performSegue(withIdentifier: "Log in", sender: self)
             }
         }
     }
