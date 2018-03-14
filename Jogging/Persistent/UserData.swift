@@ -25,6 +25,9 @@ class UserData {
     static func clear() {
         token = nil
         refreshToken = nil
+        userRole = nil
+        expiresAt = nil
+        userId = nil
     }
     
     private static let userIdKey = "user id"
