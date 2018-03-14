@@ -12,6 +12,7 @@ import SwiftyJSON
 class EntriesViewController: UITableViewController {
 
     private var entryKeys: [String]?
+    private var userEntryKeys: Dictionary<String, [String]>?
     private var entries: JSON?
     private var filter: (from: Date, to: Date)?
     private var filterDescription: String {
@@ -33,28 +34,62 @@ class EntriesViewController: UITableViewController {
     }
     
     private func requestEntries() {
-        API.getEntries { (entries, errorMessage) in
+        API.getEntries { (users, entries, errorMessage) in
             if let errorMessage = errorMessage {
                 Log.error(errorMessage)
             } else if let entries = entries {
                 self.entries = entries
-                self.entryKeys = entries.map({ tuple -> String in
-                    let (key, _) = tuple
-                    return key
-                })
-                if let filter = self.filter {
-                    let from = filter.from.timeIntervalSince1970
-                    let to = filter.to.timeIntervalSince1970
-                    Log.message("Filter \(from) \(to)")
-                    self.entryKeys = self.entryKeys?.filter({ key -> Bool in
-                        let date: TimeInterval = floor(entries[key]["date"].doubleValue)
-                        Log.message("date: \(date)")
-                        return from <= date && date <= to
-                    })
+                if let users = users {
+                    self.userEntryKeys = self.makeUserEntryKeys(from: users, entries: entries)
+                    self.entryKeys = nil
+                } else {
+                    self.entryKeys = self.makeEntryKeys(from: entries)
+                    self.userEntryKeys = nil
                 }
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    private func makeEntryKeys(from entries: JSON) -> [String] {
+        var entryKeys = entries.map({ tuple -> String in
+            let (key, _) = tuple
+            return key
+        })
+        if let filter = self.filter {
+            let from = filter.from.timeIntervalSince1970
+            let to = filter.to.timeIntervalSince1970
+            Log.message("Filter \(from) \(to)")
+            entryKeys = entryKeys.filter({ key -> Bool in
+                let date: TimeInterval = floor(entries[key]["date"].doubleValue)
+                Log.message("date: \(date)")
+                return from <= date && date <= to
+            })
+        }
+        return entryKeys
+    }
+    
+    private func makeUserEntryKeys(from users: [String : String], entries: JSON) -> Dictionary<String, [String]> {
+        Log.message("Users: \(users)")
+        let entryKeys = makeEntryKeys(from: entries)
+        var userEntryKeys = Dictionary<String, [String]>()
+        entryKeys.forEach { item in
+            guard let userId = entries[item]["user"].string else {
+                Log.error("missing user ID for \(item)")
+                return
+            }
+            guard let email = users[userId] else {
+                Log.error("missing email for \(userId)")
+                return
+            }
+            if var keys = userEntryKeys[email] {
+                keys.append(item)
+                userEntryKeys[email] = keys
+            } else {
+                userEntryKeys[email] = [item]
+            }
+        }
+        return userEntryKeys
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,22 +104,53 @@ class EntriesViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if userEntryKeys != nil {
+            return userEntryKeys!.keys.count
+        } else {
+            return 1
+        }
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entryKeys?.count ?? 0
+        if userEntryKeys != nil {
+            let allUsers = Array(userEntryKeys!.keys)
+            let user = allUsers[section]
+            return userEntryKeys![user]!.count
+        } else if entryKeys != nil {
+            return entryKeys!.count
+        } else {
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let userEntryKeys = userEntryKeys {
+            let allUsers = Array(userEntryKeys.keys)
+            return allUsers[section]
+        } else {
+            return nil
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = String(describing: EntryCell.self)
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! EntryCell
-        let entryKey = entryKeys![indexPath.row]
-        let currentEntry = entries![entryKey]
+        let currentEntry = entryAt(indexPath)
         cell.configure(with: currentEntry)
         return cell
+    }
+    
+    private func entryAt(_ indexPath: IndexPath) -> JSON {
+        if let userEntryKeys = userEntryKeys {
+            let allUsers = Array(userEntryKeys.keys)
+            let user = allUsers[indexPath.section]
+            let entryKey = userEntryKeys[user]![indexPath.row]
+            return entries![entryKey]
+        } else {
+            let entryKey = entryKeys![indexPath.row]
+            return entries![entryKey]
+        }
     }
 
     // Override to support conditional editing of the table view.

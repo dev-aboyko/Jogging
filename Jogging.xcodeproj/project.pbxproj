@@ -16,6 +16,7 @@
 		8A35DF2B204D1CD900CEADB5 /* JoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF2A204D1CD900CEADB5 /* JoggingTests.swift */; };
 		8A35DF36204D1CD900CEADB5 /* JoggingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF35204D1CD900CEADB5 /* JoggingUITests.swift */; };
 		8A85B0CD2058D2AC00235DC2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85B0CC2058D2AC00235DC2 /* FilterViewController.swift */; };
+		8A85B0CF2058EBF100235DC2 /* APIGetUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85B0CE2058EBF100235DC2 /* APIGetUsers.swift */; };
 		8AEE5F4B204EA7E9003DFA75 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEE5F4A204EA7E9003DFA75 /* Login.storyboard */; };
 		8AEE5F4E204EAC0C003DFA75 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */; };
 		8AEE5F53204FAD4D003DFA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AEE5F52204FAD4C003DFA75 /* GoogleService-Info.plist */; };
@@ -74,6 +75,7 @@
 		8A35DF35204D1CD900CEADB5 /* JoggingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoggingUITests.swift; sourceTree = "<group>"; };
 		8A35DF37204D1CD900CEADB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A85B0CC2058D2AC00235DC2 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		8A85B0CE2058EBF100235DC2 /* APIGetUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetUsers.swift; sourceTree = "<group>"; };
 		8AEE5F4A204EA7E9003DFA75 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8AEE5F52204FAD4C003DFA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				8AEE5F7E2056381F003DFA75 /* APIAddEntry.swift */,
 				8AEE5F8220564E94003DFA75 /* APIGetEntries.swift */,
 				8AEE5F8C2057CA02003DFA75 /* APIDeleteEntry.swift */,
+				8A85B0CE2058EBF100235DC2 /* APIGetUsers.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				8AEE5F6E2053DD9E003DFA75 /* UserData.swift in Sources */,
 				8AEE5F5B2053C5C6003DFA75 /* RestAPI.swift in Sources */,
 				8AEE5F8B2057A58D003DFA75 /* Date+format.swift in Sources */,
+				8A85B0CF2058EBF100235DC2 /* APIGetUsers.swift in Sources */,
 				8AEE5F852056512F003DFA75 /* EntriesViewController.swift in Sources */,
 				8AEE5F59204FBAD9003DFA75 /* Log.swift in Sources */,
 				8AEE5F5D2053C913003DFA75 /* APILogin.swift in Sources */,

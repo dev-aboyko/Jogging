@@ -77,21 +77,56 @@ class API {
         }
     }
     
-    static func getEntries(completion: @escaping (JSON?, String?) -> Void) {
+    static func getEntries(completion: @escaping ([String : String]?, JSON?, String?) -> Void) {
         refreshTokenIfNeeded { errorMessage in
             guard errorMessage == nil else {
-                completion(nil, errorMessage)
+                completion(nil, nil, errorMessage)
                 return
             }
-            let apiGetEntries = APIGetEntries(userId: UserData.userId!, token: UserData.token!)
+            let admin = UserData.userRole == "admin"
+            let apiGetEntries = admin ? APIGetEntries(token: UserData.token!) : APIGetEntries(userId: UserData.userId!, token: UserData.token!)
             apiGetEntries.connect {
                 if apiGetEntries.isSuccessfull {
-                    completion(apiGetEntries.json, nil)
+                    if admin {
+                        getUsers(entries: apiGetEntries.json, completion: completion)
+                    } else {
+                        completion(nil, apiGetEntries.json, nil)
+                    }
                 } else {
-                    completion(nil, apiGetEntries.statusDescription ?? "")
+                    completion(nil, nil, apiGetEntries.statusDescription ?? "")
                 }
             }
         }
+    }
+    
+    private static func getUsers(entries: JSON?, completion: @escaping ([String : String]?, JSON?, String?) -> Void) {
+        refreshTokenIfNeeded { errorMessage in
+            guard errorMessage == nil else {
+                completion(nil, nil, errorMessage)
+                return
+            }
+            let apiGetUsers = APIGetUsers(token: UserData.token!)
+            apiGetUsers.connect {
+                if apiGetUsers.isSuccessfull {
+                    let allUsers = users(from: apiGetUsers.json!)
+                    completion(allUsers, entries, nil)
+                } else {
+                    completion(nil, nil, apiGetUsers.statusDescription ?? "")
+                }
+            }
+        }
+    }
+    
+    private static func users(from json: JSON) -> [String : String] {
+        var allUsers = [String : String]()
+        for (user, info) in json {
+            guard let email = info["email"].string else {
+                Log.error("missing email for \(user)")
+                continue
+            }
+            allUsers[user] = email
+        }
+        return allUsers
     }
     
     static func deleteEntry(name: String, completion: @escaping (String?) -> Void) {
