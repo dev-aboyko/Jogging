@@ -15,6 +15,7 @@
 		8A35DF20204D1CD900CEADB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A35DF1E204D1CD900CEADB5 /* LaunchScreen.storyboard */; };
 		8A35DF2B204D1CD900CEADB5 /* JoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF2A204D1CD900CEADB5 /* JoggingTests.swift */; };
 		8A35DF36204D1CD900CEADB5 /* JoggingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF35204D1CD900CEADB5 /* JoggingUITests.swift */; };
+		8A85B0CD2058D2AC00235DC2 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85B0CC2058D2AC00235DC2 /* FilterViewController.swift */; };
 		8AEE5F4B204EA7E9003DFA75 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEE5F4A204EA7E9003DFA75 /* Login.storyboard */; };
 		8AEE5F4E204EAC0C003DFA75 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */; };
 		8AEE5F53204FAD4D003DFA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AEE5F52204FAD4C003DFA75 /* GoogleService-Info.plist */; };
@@ -72,6 +73,7 @@
 		8A35DF31204D1CD900CEADB5 /* JoggingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoggingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A35DF35204D1CD900CEADB5 /* JoggingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoggingUITests.swift; sourceTree = "<group>"; };
 		8A35DF37204D1CD900CEADB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A85B0CC2058D2AC00235DC2 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		8AEE5F4A204EA7E9003DFA75 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8AEE5F52204FAD4C003DFA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				8AEE5F842056512F003DFA75 /* EntriesViewController.swift */,
 				8AEE5F8820578ED4003DFA75 /* EntryCell.swift */,
 				8AEE5F8020564351003DFA75 /* AddEntryViewController.swift */,
+				8A85B0CC2058D2AC00235DC2 /* FilterViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				8AEE5F5D2053C913003DFA75 /* APILogin.swift in Sources */,
 				8AEE5F702054D2FF003DFA75 /* API.swift in Sources */,
 				8AEE5F7B2054EC6B003DFA75 /* APIGetUserRole.swift in Sources */,
+				8A85B0CD2058D2AC00235DC2 /* FilterViewController.swift in Sources */,
 				8AEE5F8120564351003DFA75 /* AddEntryViewController.swift in Sources */,
 				8AEE5F8920578ED4003DFA75 /* EntryCell.swift in Sources */,
 				8AEE5F7F2056381F003DFA75 /* APIAddEntry.swift in Sources */,

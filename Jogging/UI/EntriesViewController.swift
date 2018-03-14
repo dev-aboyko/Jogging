@@ -13,9 +13,26 @@ class EntriesViewController: UITableViewController {
 
     private var entryKeys: [String]?
     private var entries: JSON?
+    private var filter: (from: Date, to: Date)?
+    private var filterDescription: String {
+        if let filter = self.filter {
+            let from = filter.from.mediumString
+            let to = filter.to.mediumString
+            return "Filter: \(from) - \(to)"
+        } else {
+            return "Filter by dates"
+        }
+    }
+    
+    @IBOutlet private weak var filterButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        filterButton.setTitle(filterDescription, for: .normal)
+        requestEntries()
+    }
+    
+    private func requestEntries() {
         API.getEntries { (entries, errorMessage) in
             if let errorMessage = errorMessage {
                 Log.error(errorMessage)
@@ -25,8 +42,26 @@ class EntriesViewController: UITableViewController {
                     let (key, _) = tuple
                     return key
                 })
+                if let filter = self.filter {
+                    let from = filter.from.timeIntervalSince1970
+                    let to = filter.to.timeIntervalSince1970
+                    Log.message("Filter \(from) \(to)")
+                    self.entryKeys = self.entryKeys?.filter({ key -> Bool in
+                        let date: TimeInterval = floor(entries[key]["date"].doubleValue)
+                        Log.message("date: \(date)")
+                        return from <= date && date <= to
+                    })
+                }
                 self.tableView.reloadData()
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Filter" {
+            let filterVC = segue.destination as! FilterViewController
+            filterVC.onSetFilter = { self.filter = $0 }
+            filterVC.initialFilter = self.filter
         }
     }
 

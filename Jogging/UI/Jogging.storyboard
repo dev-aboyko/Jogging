@@ -128,14 +128,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="dq1-hf-Rwn" userLabel="Filter">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUM-K0-46T">
+                                    <rect key="frame" x="139" y="7" width="97" height="30"/>
+                                    <state key="normal" title="Filter by dates"/>
+                                    <connections>
+                                        <segue destination="2ht-OZ-ymt" kind="show" identifier="Filter" id="Oxq-Mo-cTd"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="nUM-K0-46T" firstAttribute="centerX" secondItem="dq1-hf-Rwn" secondAttribute="centerX" id="k6G-8k-dw3"/>
+                                <constraint firstItem="nUM-K0-46T" firstAttribute="centerY" secondItem="dq1-hf-Rwn" secondAttribute="centerY" id="k78-9x-WBS"/>
+                            </constraints>
+                        </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="eu0-mB-AvZ" userLabel="Empty footer">
-                            <rect key="frame" x="0.0" y="107" width="375" height="0.0"/>
+                            <rect key="frame" x="0.0" y="151" width="375" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryCell" rowHeight="79" id="81R-IV-Oyy" customClass="EntryCell" customModule="Jogging" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="79"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="81R-IV-Oyy" id="ZwI-Xp-Mvc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="78.5"/>
@@ -198,6 +216,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="filterButton" destination="nUM-K0-46T" id="Uxt-9l-lFR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVK-el-Ck8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -211,7 +232,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E3D-zm-gNc">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.26090545749999999" green="0.67582362510000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -240,6 +261,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCp-1n-3RF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1206" y="125"/>
+        </scene>
+        <!--Filter entries-->
+        <scene sceneID="VnS-ah-GHj">
+            <objects>
+                <tableViewController id="2ht-OZ-ymt" customClass="FilterViewController" customModule="Jogging" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wUV-9l-Ee3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection headerTitle="From date" id="Wy2-BA-pGC">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xhE-fj-izC">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xhE-fj-izC" id="tvv-al-2s1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tGN-xe-8vK">
+                                                    <rect key="frame" x="28" y="-8" width="320" height="216"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="542691850.57338798">
+                                                        <!--2018-03-14 03:44:10 +0000-->
+                                                    </date>
+                                                    <connections>
+                                                        <action selector="setFilter:" destination="2ht-OZ-ymt" eventType="valueChanged" id="S2r-WA-Q7Z"/>
+                                                    </connections>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tGN-xe-8vK" firstAttribute="centerX" secondItem="tvv-al-2s1" secondAttribute="centerX" id="2l4-Sh-7Op"/>
+                                                <constraint firstItem="tGN-xe-8vK" firstAttribute="centerY" secondItem="tvv-al-2s1" secondAttribute="centerY" id="gSI-wg-ZV4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="To date" id="MU0-oH-ftZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Jrk-Pr-lhe">
+                                        <rect key="frame" x="0.0" y="256" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jrk-Pr-lhe" id="NzD-bv-XKF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gL5-O8-7WH">
+                                                    <rect key="frame" x="27.5" y="-9" width="320" height="216"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="542691850.57338798">
+                                                        <!--2018-03-14 03:44:10 +0000-->
+                                                    </date>
+                                                    <connections>
+                                                        <action selector="setFilter:" destination="2ht-OZ-ymt" eventType="valueChanged" id="kjV-cA-RIc"/>
+                                                    </connections>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gL5-O8-7WH" firstAttribute="centerY" secondItem="NzD-bv-XKF" secondAttribute="centerY" id="gEh-in-5bB"/>
+                                                <constraint firstItem="gL5-O8-7WH" firstAttribute="centerX" secondItem="NzD-bv-XKF" secondAttribute="centerX" id="oER-DG-Fq9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="2ht-OZ-ymt" id="6Po-hS-CKo"/>
+                            <outlet property="delegate" destination="2ht-OZ-ymt" id="tPt-Kv-5U4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Filter entries" id="bGm-Vm-S08">
+                        <barButtonItem key="rightBarButtonItem" title="Clear filter" id="OxI-Y2-ofl">
+                            <connections>
+                                <action selector="clearFilter:" destination="2ht-OZ-ymt" id="knM-aV-jDS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="fromDate" destination="tGN-xe-8vK" id="h2j-cf-Mui"/>
+                        <outlet property="toDate" destination="gL5-O8-7WH" id="VdY-fU-LNe"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aly-fk-TRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1206" y="-582"/>
         </scene>
     </scenes>
 </document>
