@@ -6,7 +6,7 @@
 //  Copyright © 2018 Alexey Boyko. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import SwiftyJSON
 
 class APILogin: RestAPIpost {

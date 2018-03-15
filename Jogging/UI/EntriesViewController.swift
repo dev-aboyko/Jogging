@@ -36,7 +36,7 @@ class EntriesViewController: UITableViewController {
     private func requestEntries() {
         API.getEntries { (users, entries, errorMessage) in
             if let errorMessage = errorMessage {
-                Log.error(errorMessage)
+                self.showAlert(message: errorMessage)
             } else if let entries = entries {
                 self.entries = entries
                 if let users = users {
@@ -165,7 +165,7 @@ class EntriesViewController: UITableViewController {
             Log.message("Delete row \(indexPath.row)")
             API.deleteEntry(name: entryKeys![indexPath.row], completion: { errorMessage in
                 guard errorMessage == nil else {
-                    // insert message UI
+                    self.showAlert(message: errorMessage!)
                     return
                 }
                 self.entryKeys?.remove(at: indexPath.row)

@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         API.login(email: email.text!, password: password.text!) { (errorMessage) in
             if let errorMessage = errorMessage {
-                Log.error(errorMessage)
+                self.showAlert(message: errorMessage)
             } else {
                 Log.message("Login successfull")
                 Log.message("Token expires at \(UserData.expiresAt!)")

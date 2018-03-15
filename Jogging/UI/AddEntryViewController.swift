@@ -75,7 +75,7 @@ class AddEntryViewController: UITableViewController {
                 Log.message("Successfully added entry")
                 self.dismiss(animated: true)
             } else {
-                Log.error("adding entry. \(errorMessage!)")
+                self.showAlert(message: errorMessage!)
             }
         }
     }
@@ -90,7 +90,7 @@ class AddEntryViewController: UITableViewController {
                 Log.message("Successfully updated entry")
                 self.dismiss(animated: true)
             } else {
-                Log.error("updating entry. \(errorMessage!)")
+                self.showAlert(message: errorMessage!)
             }
         }
     }

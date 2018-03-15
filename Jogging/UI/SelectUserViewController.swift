@@ -18,7 +18,7 @@ class SelectUserViewController: UITableViewController {
         super.viewWillAppear(animated)
         API.getUsers { users, errorMessage in
             if let errorMessage = errorMessage {
-                Log.error(errorMessage)
+                self.showAlert(message: errorMessage)
             } else {
                 self.users = users!.map { (user: $0.0, email: $0.1["email"].stringValue) }
                 self.tableView.reloadData()
