@@ -42,7 +42,6 @@ class RestAPI: APIStatus {
             processFail(message: errorMessage)
             return
         }
-        Log.message("Received json: \(json)")
         isSuccessfull = true
         self.json = json
     }
@@ -70,6 +69,29 @@ class RestAPIpost: RestAPI {
             return
         }
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: contentType).response { response in
+            self.processResponse(response)
+            completion()
+        }
+    }
+    
+}
+
+class RestAPIput: RestAPI {
+    
+    private let parameters: Dictionary<String, Any>
+    
+    init(urlString: String, parameters: Dictionary<String, Any>) {
+        self.parameters = parameters
+        super.init(urlString: urlString)
+    }
+    
+    func connect(_ completion: @escaping () -> Void) {
+        let contentType: HTTPHeaders = ["Content-Type" : "application/json"]
+        guard let url = URL(string: urlString) else {
+            Log.error("creating URL for request")
+            return
+        }
+        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: contentType).response { response in
             self.processResponse(response)
             completion()
         }

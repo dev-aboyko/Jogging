@@ -10,6 +10,7 @@
 		10DFB042800769224C6911D5 /* Pods_JoggingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A9CD8DCE6329EB437B9C14 /* Pods_JoggingTests.framework */; };
 		7F5CCCC6EC34D3743677B714 /* Pods_JoggingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4845E0A7AA341AEB8C0ED4 /* Pods_JoggingUITests.framework */; };
 		8A108BA5205A1E12006F8B31 /* SelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BA4205A1E12006F8B31 /* SelectUserViewController.swift */; };
+		8A108BA7205A4F4B006F8B31 /* APIUpdateEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BA6205A4F4B006F8B31 /* APIUpdateEntry.swift */; };
 		8A35DF13204D1CD900CEADB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */; };
 		8A35DF1B204D1CD900CEADB5 /* Jogging.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF19204D1CD900CEADB5 /* Jogging.xcdatamodeld */; };
 		8A35DF1D204D1CD900CEADB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A35DF1C204D1CD900CEADB5 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		7EE32979321632653BA8D96C /* Pods-Jogging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jogging.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jogging/Pods-Jogging.release.xcconfig"; sourceTree = "<group>"; };
 		86D2447DD5C5F4532758EF18 /* Pods-JoggingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoggingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JoggingTests/Pods-JoggingTests.release.xcconfig"; sourceTree = "<group>"; };
 		8A108BA4205A1E12006F8B31 /* SelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserViewController.swift; sourceTree = "<group>"; };
+		8A108BA6205A4F4B006F8B31 /* APIUpdateEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUpdateEntry.swift; sourceTree = "<group>"; };
 		8A35DF0F204D1CD900CEADB5 /* Jogging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jogging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A35DF1A204D1CD900CEADB5 /* Jogging.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jogging.xcdatamodel; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				8AEE5F8620565658003DFA75 /* APIRefreshToken.swift */,
 				8AEE5F712054D4F7003DFA75 /* APIGetUserRole.swift */,
 				8AEE5F7E2056381F003DFA75 /* APIAddEntry.swift */,
+				8A108BA6205A4F4B006F8B31 /* APIUpdateEntry.swift */,
 				8AEE5F8220564E94003DFA75 /* APIGetEntries.swift */,
 				8AEE5F8C2057CA02003DFA75 /* APIDeleteEntry.swift */,
 				8A85B0CE2058EBF100235DC2 /* APIGetUsers.swift */,
@@ -571,6 +574,7 @@
 				8AEE5F6B2053CF3A003DFA75 /* Config.swift in Sources */,
 				8AEE5F6E2053DD9E003DFA75 /* UserData.swift in Sources */,
 				8AEE5F5B2053C5C6003DFA75 /* RestAPI.swift in Sources */,
+				8A108BA7205A4F4B006F8B31 /* APIUpdateEntry.swift in Sources */,
 				8AEE5F8B2057A58D003DFA75 /* Date+format.swift in Sources */,
 				8A85B0CF2058EBF100235DC2 /* APIGetUsers.swift in Sources */,
 				8AEE5F852056512F003DFA75 /* EntriesViewController.swift in Sources */,

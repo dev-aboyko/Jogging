@@ -70,7 +70,6 @@ class EntriesViewController: UITableViewController {
     }
     
     private func makeUserEntryKeys(from users: [String : String], entries: JSON) -> Dictionary<String, [String]> {
-        Log.message("Users: \(users)")
         let entryKeys = makeEntryKeys(from: entries)
         var userEntryKeys = Dictionary<String, [String]>()
         entryKeys.forEach { item in
@@ -92,16 +91,6 @@ class EntriesViewController: UITableViewController {
         return userEntryKeys
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Filter" {
-            let filterVC = segue.destination as! FilterViewController
-            filterVC.onSetFilter = { self.filter = $0 }
-            filterVC.initialFilter = self.filter
-        } else if segue.identifier == "Log out" {
-            UserData.clear()
-        }
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -125,6 +114,10 @@ class EntriesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return emailFor(section)
+    }
+
+    private func emailFor(_ section: Int) -> String? {
         if let userEntryKeys = userEntryKeys {
             let allUsers = Array(userEntryKeys.keys)
             return allUsers[section]
@@ -132,7 +125,7 @@ class EntriesViewController: UITableViewController {
             return nil
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = String(describing: EntryCell.self)
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! EntryCell
@@ -141,19 +134,25 @@ class EntriesViewController: UITableViewController {
         return cell
     }
     
-    private func entryAt(_ indexPath: IndexPath) -> JSON {
+    private func entryKeyAt(_ indexPath: IndexPath) -> String {
         if let userEntryKeys = userEntryKeys {
             let allUsers = Array(userEntryKeys.keys)
             let user = allUsers[indexPath.section]
-            let entryKey = userEntryKeys[user]![indexPath.row]
-            return entries![entryKey]
+            return userEntryKeys[user]![indexPath.row]
         } else {
-            let entryKey = entryKeys![indexPath.row]
-            return entries![entryKey]
+            return entryKeys![indexPath.row]
         }
     }
+    
+    private func entryAt(_ indexPath: IndexPath) -> JSON {
+        let key = entryKeyAt(indexPath)
+        return entries![key]
+    }
 
-    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "Edit entry", sender: indexPath)
+    }
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
@@ -175,29 +174,23 @@ class EntriesViewController: UITableViewController {
         }    
     }
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        if segue.identifier == "Filter" {
+            let filterVC = segue.destination as! FilterViewController
+            filterVC.onSetFilter = { self.filter = $0 }
+            filterVC.initialFilter = self.filter
+        } else if segue.identifier == "Edit entry" {
+            let indexPath = sender as! IndexPath
+            let entryKey = entryKeyAt(indexPath)
+            let entry = entryAt(indexPath)
+            let email = emailFor(indexPath.section)
 
+            let navi = segue.destination as! UINavigationController
+            let entryVC = navi.viewControllers.first as! AddEntryViewController
+            entryVC.editEntry(entry, key: entryKey, email: email)
+        } else if segue.identifier == "Log out" {
+            UserData.clear()
+        }
+    }
+    
 }

@@ -130,7 +130,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ETj-0E-pix">
                             <connections>
-                                <action selector="addEntry:" destination="g48-jj-wEp" id="BVT-jS-cFk"/>
+                                <action selector="onDone:" destination="g48-jj-wEp" id="rJX-Jv-tu2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -286,6 +286,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filterButton" destination="nUM-K0-46T" id="Uxt-9l-lFR"/>
+                        <segue destination="Wzm-co-8K0" kind="presentation" identifier="Edit entry" id="d45-p0-2Xo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVK-el-Ck8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -424,4 +425,7 @@
             <point key="canvasLocation" x="1206" y="-582"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8by-bV-FBE"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -79,6 +79,26 @@ class API {
         }
     }
     
+    static func updateEntry(entry: String, userId: String, date: Date, time: Date, distance: Int, completion: @escaping (String?) -> Void) {
+        Log.message("Update \(entry)")
+        refreshTokenIfNeeded { errorMessage in
+            guard errorMessage == nil else {
+                completion(errorMessage)
+                return
+            }
+            let cal = Calendar.current
+            let minutes = cal.component(.minute, from: time) + 60 * cal.component(.hour, from: time)
+            let apiUpdateEntry = APIUpdateEntry(entry: entry, date: date.timeIntervalSince1970, minutes: minutes, distance: distance, userId: userId, token: UserData.token!)
+            apiUpdateEntry.connect {
+                if apiUpdateEntry.isSuccessfull {
+                    completion(nil)
+                } else {
+                    completion(apiUpdateEntry.statusDescription ?? "")
+                }
+            }
+        }
+    }
+    
     static func getEntries(completion: @escaping ([String : String]?, JSON?, String?) -> Void) {
         refreshTokenIfNeeded { errorMessage in
             guard errorMessage == nil else {

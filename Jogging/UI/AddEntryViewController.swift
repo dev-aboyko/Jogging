@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class AddEntryViewController: UITableViewController {
 
@@ -14,15 +15,57 @@ class AddEntryViewController: UITableViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var distance: UITextField!
+
+    private var editEntryKey: String?
+    private var editEntry: JSON?
+    private var editEmail: String?
     
-    private var currentUser: (user: String, email: String)? {didSet { userCell.textLabel!.text = currentUser?.email ?? "" } }
+    private var currentUser: (user: String, email: String)? {
+        didSet {
+            userCell.textLabel!.text = currentUser?.email ?? ""
+        }
+    }
+    
+    func editEntry(_ entry: JSON, key: String, email: String?) {
+        editEntryKey = key
+        editEntry = entry
+        editEmail = email
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentUser = UserData.currentUser
+        if editEntryKey != nil {
+            guard let entry = editEntry else {
+                Log.error("bad edit entry")
+                return
+            }
+            self.title = "Edit entry"
+            let timeInterval = TimeInterval(entry["date"].stringValue)!
+            datePicker.date = Date(timeIntervalSince1970: timeInterval)
+            let cal = Calendar.current
+            var comp = DateComponents()
+            comp.minute = Int(entry["minutes"].stringValue)
+            timePicker.date = cal.date(from: comp)!
+            distance.text = entry["distance"].stringValue
+            if let email = editEmail {
+                currentUser = (entry["user"].stringValue, email)
+            } else {
+                currentUser = UserData.currentUser
+            }
+        } else {
+            currentUser = UserData.currentUser
+        }
     }
     
-    @IBAction func addEntry(_ sender: Any) {
+    @IBAction func onDone(_ sender: Any) {
+        if let entry = editEntryKey {
+            updateEntry(entry)
+        } else {
+            addEntry()
+        }
+    }
+    
+    private func addEntry() {
         guard let intDistance = Int(distance.text!) else {
             Log.error("bad distance")
             return
@@ -33,6 +76,21 @@ class AddEntryViewController: UITableViewController {
                 self.dismiss(animated: true)
             } else {
                 Log.error("adding entry. \(errorMessage!)")
+            }
+        }
+    }
+    
+    private func updateEntry(_ entry: String) {
+        guard let intDistance = Int(distance.text!) else {
+            Log.error("bad distance")
+            return
+        }
+        API.updateEntry(entry: entry, userId: currentUser!.user, date: datePicker.date, time: timePicker.date, distance: intDistance) { errorMessage in
+            if errorMessage == nil {
+                Log.message("Successfully updated entry")
+                self.dismiss(animated: true)
+            } else {
+                Log.error("updating entry. \(errorMessage!)")
             }
         }
     }

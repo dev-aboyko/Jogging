@@ -17,7 +17,6 @@ class EntryCell: UITableViewCell {
     @IBOutlet private weak var speed: UILabel!
     
     func configure(with entry: JSON) {
-        Log.message("Entry: \(entry)")
         let timeInterval = TimeInterval(entry["date"].stringValue)!
         let date = Date(timeIntervalSince1970: timeInterval)
         self.date.text = date.mediumString
