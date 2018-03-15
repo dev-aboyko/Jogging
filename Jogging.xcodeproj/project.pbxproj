@@ -13,6 +13,7 @@
 		8A108BA7205A4F4B006F8B31 /* APIUpdateEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BA6205A4F4B006F8B31 /* APIUpdateEntry.swift */; };
 		8A108BA9205A572B006F8B31 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BA8205A572B006F8B31 /* UIViewController+alert.swift */; };
 		8A108BAB205A5FE3006F8B31 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BAA205A5FE3006F8B31 /* UsersViewController.swift */; };
+		8A108BAD205A68AC006F8B31 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BAC205A68AC006F8B31 /* TabBarController.swift */; };
 		8A35DF13204D1CD900CEADB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */; };
 		8A35DF1B204D1CD900CEADB5 /* Jogging.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF19204D1CD900CEADB5 /* Jogging.xcdatamodeld */; };
 		8A35DF1D204D1CD900CEADB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A35DF1C204D1CD900CEADB5 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		8A108BA6205A4F4B006F8B31 /* APIUpdateEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUpdateEntry.swift; sourceTree = "<group>"; };
 		8A108BA8205A572B006F8B31 /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		8A108BAA205A5FE3006F8B31 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		8A108BAC205A68AC006F8B31 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8A35DF0F204D1CD900CEADB5 /* Jogging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jogging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A35DF1A204D1CD900CEADB5 /* Jogging.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jogging.xcdatamodel; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				8AEE5F4A204EA7E9003DFA75 /* Login.storyboard */,
 				8AEE5F4D204EAC0C003DFA75 /* LoginViewController.swift */,
 				8AEE5F7C2056278D003DFA75 /* Jogging.storyboard */,
+				8A108BAC205A68AC006F8B31 /* TabBarController.swift */,
 				8AEE5F842056512F003DFA75 /* EntriesViewController.swift */,
 				8AEE5F8820578ED4003DFA75 /* EntryCell.swift */,
 				8AEE5F8020564351003DFA75 /* AddEntryViewController.swift */,
@@ -590,6 +593,7 @@
 				8AEE5F5D2053C913003DFA75 /* APILogin.swift in Sources */,
 				8AEE5F702054D2FF003DFA75 /* API.swift in Sources */,
 				8AEE5F7B2054EC6B003DFA75 /* APIGetUserRole.swift in Sources */,
+				8A108BAD205A68AC006F8B31 /* TabBarController.swift in Sources */,
 				8A85B0CD2058D2AC00235DC2 /* FilterViewController.swift in Sources */,
 				8AEE5F8120564351003DFA75 /* AddEntryViewController.swift in Sources */,
 				8AEE5F8920578ED4003DFA75 /* EntryCell.swift in Sources */,

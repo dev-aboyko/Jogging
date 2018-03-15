@@ -17,6 +17,7 @@ class UserData {
                                     set { defaults.set(newValue, forKey: userRoleKey ) } }
     
     static var isAdmin: Bool { return userRole == "admin" }
+    static var isUserManager: Bool { return userRole == "admin" || userRole == "umanager" }
     
     static var expiresAt: Date? {   get { return defaults.value(forKey: expiresAtKey) as? Date }
                                     set { defaults.set(newValue, forKey: expiresAtKey) } }

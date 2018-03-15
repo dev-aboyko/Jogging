@@ -538,7 +538,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="syQ-dN-rLh">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="543-gw-tuo" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="543-gw-tuo" customClass="TabBarController" customModule="Jogging" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zX8-pL-Ioi">
                         <autoresizingMask key="autoresizingMask"/>
