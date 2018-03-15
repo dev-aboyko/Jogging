@@ -47,18 +47,20 @@ class API {
             let refreshToken = apiLogin.refreshToken,
             let expiresIn = apiLogin.expiresIn,
             let userId = apiLogin.userId,
+            let email = apiGetUserRole.email,
             let userRole = apiGetUserRole.userRole else {
                 return "getting user info"
         }
         UserData.userId = userId
         UserData.token = token
         UserData.refreshToken = refreshToken
+        UserData.email = email
         UserData.userRole = userRole
         UserData.expiresAt = Date().addingTimeInterval(expiresIn)
         return nil
     }
     
-    static func addEntry(date: Date, time: Date, distance: Int, completion: @escaping (String?) -> Void) {
+    static func addEntry(userId: String, date: Date, time: Date, distance: Int, completion: @escaping (String?) -> Void) {
         refreshTokenIfNeeded { errorMessage in
             guard errorMessage == nil else {
                 completion(errorMessage)
@@ -66,7 +68,7 @@ class API {
             }
             let cal = Calendar.current
             let minutes = cal.component(.minute, from: time) + 60 * cal.component(.hour, from: time)
-            let apiAddEntry = APIAddEntry(date: date.timeIntervalSince1970, minutes: minutes, distance: distance, userId: UserData.userId!, token: UserData.token!)
+            let apiAddEntry = APIAddEntry(date: date.timeIntervalSince1970, minutes: minutes, distance: distance, userId: userId, token: UserData.token!)
             apiAddEntry.connect {
                 if apiAddEntry.isSuccessfull {
                     completion(nil)
@@ -127,6 +129,23 @@ class API {
             allUsers[user] = email
         }
         return allUsers
+    }
+    
+    static func getUsers(completion: @escaping (JSON?, String?) -> Void) {
+        refreshTokenIfNeeded { errorMessage in
+            guard errorMessage == nil else {
+                completion(nil, errorMessage)
+                return
+            }
+            let apiGetUsers = APIGetUsers(token: UserData.token!)
+            apiGetUsers.connect {
+                if apiGetUsers.isSuccessfull {
+                    completion(apiGetUsers.json, nil)
+                } else {
+                    completion(nil, apiGetUsers.statusDescription ?? "")
+                }
+            }
+        }
     }
     
     static func deleteEntry(name: String, completion: @escaping (String?) -> Void) {

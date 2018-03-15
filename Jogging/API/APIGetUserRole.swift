@@ -11,6 +11,7 @@ import UIKit
 class APIGetUserRole: RestAPIget {
 
     var userRole: String? { return json?["role"].string }
+    var email: String? { return json?["email"].string }
     
     init(userId: String, token: String) {
         let urlString = "\(Config.baseURL)/users/\(userId).json?auth=\(token)"

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		10DFB042800769224C6911D5 /* Pods_JoggingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A9CD8DCE6329EB437B9C14 /* Pods_JoggingTests.framework */; };
 		7F5CCCC6EC34D3743677B714 /* Pods_JoggingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4845E0A7AA341AEB8C0ED4 /* Pods_JoggingUITests.framework */; };
+		8A108BA5205A1E12006F8B31 /* SelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BA4205A1E12006F8B31 /* SelectUserViewController.swift */; };
 		8A35DF13204D1CD900CEADB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */; };
 		8A35DF1B204D1CD900CEADB5 /* Jogging.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF19204D1CD900CEADB5 /* Jogging.xcdatamodeld */; };
 		8A35DF1D204D1CD900CEADB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A35DF1C204D1CD900CEADB5 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		51A9CD8DCE6329EB437B9C14 /* Pods_JoggingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JoggingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE32979321632653BA8D96C /* Pods-Jogging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jogging.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jogging/Pods-Jogging.release.xcconfig"; sourceTree = "<group>"; };
 		86D2447DD5C5F4532758EF18 /* Pods-JoggingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoggingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JoggingTests/Pods-JoggingTests.release.xcconfig"; sourceTree = "<group>"; };
+		8A108BA4205A1E12006F8B31 /* SelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserViewController.swift; sourceTree = "<group>"; };
 		8A35DF0F204D1CD900CEADB5 /* Jogging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jogging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A35DF1A204D1CD900CEADB5 /* Jogging.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jogging.xcdatamodel; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				8AEE5F842056512F003DFA75 /* EntriesViewController.swift */,
 				8AEE5F8820578ED4003DFA75 /* EntryCell.swift */,
 				8AEE5F8020564351003DFA75 /* AddEntryViewController.swift */,
+				8A108BA4205A1E12006F8B31 /* SelectUserViewController.swift */,
 				8A85B0CC2058D2AC00235DC2 /* FilterViewController.swift */,
 			);
 			path = UI;
@@ -563,6 +566,7 @@
 				8AEE5F4E204EAC0C003DFA75 /* LoginViewController.swift in Sources */,
 				8A35DF1B204D1CD900CEADB5 /* Jogging.xcdatamodeld in Sources */,
 				8AEE5F8D2057CA02003DFA75 /* APIDeleteEntry.swift in Sources */,
+				8A108BA5205A1E12006F8B31 /* SelectUserViewController.swift in Sources */,
 				8AEE5F8720565658003DFA75 /* APIRefreshToken.swift in Sources */,
 				8AEE5F6B2053CF3A003DFA75 /* Config.swift in Sources */,
 				8AEE5F6E2053DD9E003DFA75 /* UserData.swift in Sources */,
