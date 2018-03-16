@@ -11,6 +11,34 @@ import SwiftyJSON
 
 class API {
     
+    static func createUser(email: String, password: String, role: String, completion: @escaping (String?) -> Void) {
+        let apiCreateUser = APICreateUser(email: email, password: password)
+        apiCreateUser.connect {
+            if apiCreateUser.isSuccessfull {
+                createUserInfo(userId: apiCreateUser.userId!, email: email, role: role, completion: completion)
+            } else {
+                completion(apiCreateUser.statusDescription ?? "")
+            }
+        }
+    }
+    
+    static func createUserInfo(userId: String, email: String, role: String, completion: @escaping (String?) -> Void) {
+        refreshTokenIfNeeded { errorMessage in
+            guard errorMessage == nil else {
+                completion(errorMessage ?? "")
+                return
+            }
+            let apiCreateUserInfo = APICreateUserInfo(userId: userId, email: email, role: role, token: UserData.token!)
+            apiCreateUserInfo.connect {
+                if apiCreateUserInfo.isSuccessfull {
+                    completion(nil)
+                } else {
+                    completion(apiCreateUserInfo.statusDescription ?? "")
+                }
+            }
+        }
+    }
+    
     static func login(email: String, password: String, completion: @escaping (String?) -> Void) {
         let apiLogin = APILogin(email: email, password: password)
         apiLogin.connect {
@@ -80,7 +108,6 @@ class API {
     }
     
     static func updateEntry(entry: String, userId: String, date: Date, time: Date, distance: Int, completion: @escaping (String?) -> Void) {
-        Log.message("Update \(entry)")
         refreshTokenIfNeeded { errorMessage in
             guard errorMessage == nil else {
                 completion(errorMessage)

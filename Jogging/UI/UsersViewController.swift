@@ -14,8 +14,12 @@ class UsersViewController: UITableViewController {
     private var userKeys: [String]?
     private var users: JSON?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        requestUsers()
+    }
+
+    private func requestUsers() {
         API.getUsers { (users, errorMessage) in
             if let errorMessage = errorMessage {
                 self.showAlert(message: errorMessage)
@@ -26,7 +30,7 @@ class UsersViewController: UITableViewController {
             }
         }
     }
-
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
