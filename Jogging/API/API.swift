@@ -195,6 +195,23 @@ class API {
         return allUsers
     }
     
+    static func getMyEntries(completion: @escaping(JSON?, String?) -> Void) {
+        refreshTokenIfNeeded { errorMessage in
+            guard errorMessage == nil else {
+                completion(nil, errorMessage)
+                return
+            }
+            let apiGetEntries = APIGetEntries(userId: UserData.userId!, token: UserData.token!)
+            apiGetEntries.connect {
+                if apiGetEntries.isSuccessfull {
+                    completion(apiGetEntries.json, nil)
+                } else {
+                    completion(nil, apiGetEntries.statusDescription ?? "")
+                }
+            }
+        }
+    }
+    
     static func getUsers(completion: @escaping (JSON?, String?) -> Void) {
         refreshTokenIfNeeded { errorMessage in
             guard errorMessage == nil else {
