@@ -122,7 +122,6 @@ class RestAPIdelete: RestAPI {
             return
         }
         Alamofire.request(url, method:.delete).response { (dataResponse) in
-            Log.message("Data response: \(dataResponse)")
             self.statusDescription = dataResponse.error?.localizedDescription
             self.isSuccessfull = self.statusDescription == nil
             completion()

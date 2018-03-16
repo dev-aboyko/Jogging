@@ -20,9 +20,7 @@ class ReportViewController: UITableViewController {
     }
 
     private func requestEntries() {
-        Log.message("Request entries")
         API.getMyEntries { entries, errorMessage in
-            Log.message("\(entries!)")
             guard errorMessage == nil else {
                 self.showAlert(message: errorMessage)
                 return
@@ -32,7 +30,6 @@ class ReportViewController: UITableViewController {
             }
             var weeks = Dictionary<Int, [JSON]>()
             for (_, json) in entries {
-                Log.message("Entry \(json)")
                 guard let timeInterval: TimeInterval = json["date"].double else {
                     Log.error("getting time interval")
                     continue
@@ -46,7 +43,6 @@ class ReportViewController: UITableViewController {
             }
             self.weeks = weeks
             self.weekKeys = weeks.keys.sorted { $0 > $1}
-            Log.message("Weeks \(weeks)")
             self.tableView.reloadData()
         }
     }

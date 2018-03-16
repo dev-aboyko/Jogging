@@ -72,7 +72,6 @@ class AddEntryViewController: UITableViewController {
         }
         API.addEntry(userId: currentUser!.user, date: datePicker.date, time: timePicker.date, distance: intDistance) { errorMessage in
             if errorMessage == nil {
-                Log.message("Successfully added entry")
                 self.dismiss(animated: true)
             } else {
                 self.showAlert(message: errorMessage!)
@@ -87,7 +86,6 @@ class AddEntryViewController: UITableViewController {
         }
         API.updateEntry(entry: entry, userId: currentUser!.user, date: datePicker.date, time: timePicker.date, distance: intDistance) { errorMessage in
             if errorMessage == nil {
-                Log.message("Successfully updated entry")
                 self.dismiss(animated: true)
             } else {
                 self.showAlert(message: errorMessage!)

@@ -59,10 +59,8 @@ class EntriesViewController: UITableViewController {
         if let filter = self.filter {
             let from = filter.from.timeIntervalSince1970
             let to = filter.to.timeIntervalSince1970
-            Log.message("Filter \(from) \(to)")
             entryKeys = entryKeys.filter({ key -> Bool in
                 let date: TimeInterval = floor(entries[key]["date"].doubleValue)
-                Log.message("date: \(date)")
                 return from <= date && date <= to
             })
         }

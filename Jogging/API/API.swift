@@ -260,7 +260,6 @@ class API {
             completion(nil)
             return
         }
-        Log.message("Refresh auth token")
         let apiRefreshToken = APIRefreshToken(refreshToken: refreshToken)
         apiRefreshToken.connect {
             if apiRefreshToken.isSuccessfull {
