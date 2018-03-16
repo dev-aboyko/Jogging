@@ -17,6 +17,7 @@
 		8A108BAF205A844B006F8B31 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BAE205A844B006F8B31 /* AddUserViewController.swift */; };
 		8A108BB1205A8C8D006F8B31 /* APICreateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BB0205A8C8D006F8B31 /* APICreateUser.swift */; };
 		8A108BB3205B575D006F8B31 /* APICreateUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BB2205B575D006F8B31 /* APICreateUserInfo.swift */; };
+		8A108BB5205B5D43006F8B31 /* APIDeleteUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A108BB4205B5D43006F8B31 /* APIDeleteUserInfo.swift */; };
 		8A35DF13204D1CD900CEADB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */; };
 		8A35DF1B204D1CD900CEADB5 /* Jogging.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A35DF19204D1CD900CEADB5 /* Jogging.xcdatamodeld */; };
 		8A35DF1D204D1CD900CEADB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A35DF1C204D1CD900CEADB5 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		8A108BAE205A844B006F8B31 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		8A108BB0205A8C8D006F8B31 /* APICreateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICreateUser.swift; sourceTree = "<group>"; };
 		8A108BB2205B575D006F8B31 /* APICreateUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICreateUserInfo.swift; sourceTree = "<group>"; };
+		8A108BB4205B5D43006F8B31 /* APIDeleteUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDeleteUserInfo.swift; sourceTree = "<group>"; };
 		8A35DF0F204D1CD900CEADB5 /* Jogging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jogging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A35DF12204D1CD900CEADB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A35DF1A204D1CD900CEADB5 /* Jogging.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jogging.xcdatamodel; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				8AEE5F5A2053C5C6003DFA75 /* RestAPI.swift */,
 				8A108BB0205A8C8D006F8B31 /* APICreateUser.swift */,
 				8A108BB2205B575D006F8B31 /* APICreateUserInfo.swift */,
+				8A108BB4205B5D43006F8B31 /* APIDeleteUserInfo.swift */,
 				8AEE5F5C2053C913003DFA75 /* APILogin.swift */,
 				8AEE5F8620565658003DFA75 /* APIRefreshToken.swift */,
 				8AEE5F712054D4F7003DFA75 /* APIGetUserRole.swift */,
@@ -586,6 +589,7 @@
 			files = (
 				8AEE5F4E204EAC0C003DFA75 /* LoginViewController.swift in Sources */,
 				8A108BA9205A572B006F8B31 /* UIViewController+alert.swift in Sources */,
+				8A108BB5205B5D43006F8B31 /* APIDeleteUserInfo.swift in Sources */,
 				8A35DF1B204D1CD900CEADB5 /* Jogging.xcdatamodeld in Sources */,
 				8AEE5F8D2057CA02003DFA75 /* APIDeleteEntry.swift in Sources */,
 				8A108BA5205A1E12006F8B31 /* SelectUserViewController.swift in Sources */,

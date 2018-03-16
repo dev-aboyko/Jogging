@@ -45,5 +45,24 @@ class UsersViewController: UITableViewController {
         cell.detailTextLabel?.text = user["role"].string
         return cell
     }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            API.deleteUserInfo(userId: userKeys![indexPath.row]){ errorMessage in
+                guard errorMessage == nil else {
+                    self.showAlert(message: errorMessage)
+                    return
+                }
+                self.userKeys?.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
 
 }

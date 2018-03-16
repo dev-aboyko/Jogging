@@ -25,7 +25,7 @@ class API {
     static func createUserInfo(userId: String, email: String, role: String, completion: @escaping (String?) -> Void) {
         refreshTokenIfNeeded { errorMessage in
             guard errorMessage == nil else {
-                completion(errorMessage ?? "")
+                completion(errorMessage)
                 return
             }
             let apiCreateUserInfo = APICreateUserInfo(userId: userId, email: email, role: role, token: UserData.token!)
@@ -34,6 +34,23 @@ class API {
                     completion(nil)
                 } else {
                     completion(apiCreateUserInfo.statusDescription ?? "")
+                }
+            }
+        }
+    }
+    
+    static func deleteUserInfo(userId: String, completion: @escaping (String?) -> Void) {
+        refreshTokenIfNeeded { errorMessage in
+            guard errorMessage == nil else {
+                completion(errorMessage)
+                return
+            }
+            let api = APIDeleteUserInfo(userId: userId, token: UserData.token!)
+            api.connect {
+                if api.isSuccessfull {
+                    completion(nil)
+                } else {
+                    completion(api.statusDescription ?? "")
                 }
             }
         }
@@ -63,7 +80,7 @@ class API {
             if apiGetUserRole.isSuccessfull {
                 errorMessage = storeLoginInfo(apiLogin: apiLogin, apiGetUserRole: apiGetUserRole)
             } else {
-                errorMessage = apiGetUserRole.statusDescription ?? "Get User Role API error"
+                errorMessage = "User not found"
             }
             completion(errorMessage)
         }

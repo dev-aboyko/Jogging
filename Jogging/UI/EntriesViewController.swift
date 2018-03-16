@@ -162,7 +162,6 @@ class EntriesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            Log.message("Delete row \(indexPath.row)")
             API.deleteEntry(name: entryKeys![indexPath.row], completion: { errorMessage in
                 guard errorMessage == nil else {
                     self.showAlert(message: errorMessage!)
